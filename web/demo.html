@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>hypnotic: Let JavaScript Sleep</title>
+    <title>Hypnotic: Let JavaScript Sleep!</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
     <script src="../deps/streamlinejs/lib/callbacks/require-stub.js"></script>
     <script src="../deps/narcissus/lib/jsdefs.js"></script>
     <script src="../deps/narcissus/lib/jslex.js"></script>
@@ -22,73 +24,101 @@
     </style>
   </head>
   <body>
-  <textarea id="source" autocomplete="off" rows="30" cols="50">
-// Collect mouse events
-var events = [];
-document.addEventListener('mousemove', function(e) {
-    events.push(e);
-});
-
-// Wait for mouse movement SYNCHRONOUSLY
-function wait_for_mousemove(timeout) {
-    events.length = 0;
-    var threshold = Date.now() + timeout;
-    while(events.length == 0) {
-        if((timeout > 0) && (Date.now() >= threshold))
-            return false;
-
-        sleep(10); // does it work?
-    }
-    return true;
-}
-
-
-// helpers
-var output_e = document.getElementById('output');
-var print = function(msg) {
-    output_e.textContent = msg;
-};
-
-
-// a bunch of blank lines
-
-
-
-
-
-
-/*
- * Does sleep() work in JavaScript?
- * Yes with hypnotic!
- */
-(function(){
-    print('How fast can you react?');
-    sleep(1500);
-
-    print('Let\'s see...');
-    sleep(1500);
-
-    print('Hold your mouse...');
-    var timeout = 1000 + 2000 * Math.random(); 
-    if(wait_for_mousemove(timeout)) {
-        print('Too soon!');
-        return;
-    }
-
-    print('Wait for it...');
-    var timeout = 2000 + 1000 * Math.random(); 
-    if(wait_for_mousemove(timeout)) {
-        print('Too soon!');
-        return;
-    }
-
-    print('Move it now!');
-    var t = Date.now();
-    wait_for_mousemove(0);
-    print('Time: ' + (Date.now() - t) + 'ms');
-})();
-  </textarea>
-  <button type="button" id="execute">Execute!</button>
-  <div id="output"></div>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Hypnotic: <small>Let JavaScript Sleep!</small></h1>
+        <h3>by <a target="_blank" href="http://coolwanglu.github.io/">Lu Wang</a></h3>
+        <br/>
+        <p>We all know that <a target="_blank" href="https://www.google.com.hk/search?q=why+is+there+no+sleep+function+in+javascript" >there is no <em>sleep()</em> in JavaScript</a>.</p>
+        <p>But those days are finally over! Try <strong>Hypnotic</strong> below and enjoy!</p>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Play around with the source code and hit <strong>Execute</strong></h3>
+            </div>
+            <div class="panel-body">
+              <div class="alert alert-warning">
+                <strong>Warning:</strong> Only Firefox is supported right now.
+              </div>
+              <textarea id="source" class="form-control" autocomplete="off" rows="30">
+        // Collect mouse events
+        var events = [];
+        document.addEventListener('mousemove', function(e) {
+            events.push(e);
+        });
+    
+        // Wait for mouse movement SYNCHRONOUSLY
+        function wait_for_mousemove(timeout) {
+            events.length = 0;
+            var threshold = Date.now() + timeout;
+            while(events.length == 0) {
+                if((timeout > 0) && (Date.now() >= threshold))
+                    return false;
+    
+                sleep(10); // does it work?
+            }
+            return true;
+        }
+    
+    
+        // helpers
+        var output_e = document.getElementById('output');
+        var print = function(msg) {
+            output_e.textContent = msg;
+        };
+    
+    
+        // a bunch of blank lines
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        /*
+         * Does sleep() work in JavaScript?
+         * Yes with Hypnotic!
+         */
+        (function(){
+            print('How fast can you react?');
+            sleep(1500);
+    
+            print('Let\'s see...');
+            sleep(1500);
+    
+            print('Hold your mouse...');
+            var timeout = 1000 + 2000 * Math.random(); 
+            if(wait_for_mousemove(timeout)) {
+                print('Too soon!');
+                return;
+            }
+    
+            print('Wait for it...');
+            var timeout = 2000 + 1000 * Math.random(); 
+            if(wait_for_mousemove(timeout)) {
+                print('Too soon!');
+                return;
+            }
+    
+            print('Move it now!');
+            var t = Date.now();
+            wait_for_mousemove(0);
+            print('Time: ' + (Date.now() - t) + 'ms');
+        })();
+              </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <button class="btn btn-primary btn-lg" type="button" id="execute">Execute!</button>
+          <div class="well"><h3 id="output"></h3></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

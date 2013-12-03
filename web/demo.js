@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var btn = document.getElementById('execute');
     btn.addEventListener('click', function() {
-        hypnotic.async_execute_script(src.value);
+        btn.disabled = true;
+        Hypnotic.execute(src.value, function(){
+            btn.disabled = false;
+        });
     });
 });
