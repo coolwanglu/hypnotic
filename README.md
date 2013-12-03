@@ -1,0 +1,6 @@
+### hypnotic
+
+Let JavaScript sleep
+
+
+

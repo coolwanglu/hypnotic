@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>hypnotic</title>
+    <script src="../deps/streamlinejs/lib/callbacks/require-stub.js"></script>
+    <script src="../deps/narcissus/lib/jsdefs.js"></script>
+    <script src="../deps/narcissus/lib/jslex.js"></script>
+    <script src="../deps/narcissus/lib/jsparse.js"></script>
+    <script src="../deps/narcissus/lib/jsdecomp.js"></script>
+    <script src="../deps/streamlinejs/lib/version.js"></script>
+    <script src="../deps/streamlinejs/lib/util/source-map.js"></script>
+    <script src="../deps/streamlinejs/lib/callbacks/format.js"></script>
+    <script src="../deps/streamlinejs/lib/callbacks/transform.js"></script>
+    <script src="../deps/streamlinejs/lib/util/future.js"></script>
+    <script src="../deps/streamlinejs/lib/callbacks/runtime.js"></script>
+    <script src="../deps/streamlinejs/lib/callbacks/builtins.js"></script>
+    <script src="../lib/hypnotic.js"></script>
+    <script>
+        function execute() {
+            hypnotic.async_execute_script(document.getElementById('source').value);
+        }
+    </script>
+    <style>
+    </style>
+  </head>
+  <body>
+  <textarea id="source">/*
+ * Collect mouse events
+ */
+var events = [];
+document.addEventListener('mousemove', function(e) {
+  events.push(e);
+});
+
+/*
+ * Check events periodically,
+ */
+var output_e = document.getElementById('output');
+while(true) {
+  if(events.length > 0) {
+    output_e.textContent += 'Got events: ' + events.length + '\n';
+    events.length = 0;
+  }
+  sleep(100); // does it work?
+}</textarea>
+  <button type="button" onclick="execute();">Execute!</button>
+  <div id="output"></div>
+  </body>
+</html>
