@@ -1,12 +1,13 @@
 /*
+ * Hypnotic can be extended.
  * In this example,
- * we introduce a simple semphore that supports only one producer/consumer
+ * A simple semaphore is introduced,
+ * which supports only one producer/consumer
  * 
  * This script should be run outside Hypnotic!
  */
 
-function SemaphoreOne() {
-}
+function SemaphoreOne() { }
  
 SemaphoreOne.prototype = {
     /*
@@ -16,12 +17,10 @@ SemaphoreOne.prototype = {
      * it will then go to sleep until the callbackk function is called
      */
     wait: new Hypnotic(function(cb) {
-        console.log('wait');
         window.sema_out = this;
         this.cb = cb;
     }),
     release: function() {
-        console.log(this.cb);
         if(this.cb) {
             var cb = this.cb;
             this.cb = null;
@@ -29,3 +28,4 @@ SemaphoreOne.prototype = {
         }
     }
 };
+

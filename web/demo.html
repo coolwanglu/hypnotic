@@ -24,7 +24,6 @@
     <script src="../deps/streamlinejs/lib/callbacks/builtins.js"></script>
     <script src="../lib/hypnotic.js"></script>
     <script src="sleep.js"></script>
-    <script src="semaphoreone.js"></script>
     <script src="demo.js"></script>
     <style>
     </style>
@@ -224,31 +223,6 @@
               <div id="try-your-own" class="collapse">
                 <h3><span class="glyphicon glyphicon-arrow-left"></span> Looks interesting?</h3>
                 <h4>Try your own code with <em>sleep()</em>.</h4>
-                <br>
-                <br>
-                <h4><span class="glyphicon glyphicon-arrow-down"></span> You can also load github gists and share it with others!</h4>
-                <div class="input-group">
-                  <input type="text" class="form-control" id="github-username" placeholder="Github Username">
-                  <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" id="btn-list-github-user-gist">Load</button>
-                  </span>
-                </div>
-                <div id="alert-not-opt-in" class="collapse">
-                  <div class="alert alert-danger">
-                    <strong>Oops!</strong> Seems that this user has not opted in.<br>
-                    If you would like to opt-in, <a href="https://github.com/coolwanglu/hypnotic" class="alert-link">star the project at Github</a>.
-                  </div>
-                </div>
-                <div id="alert-gist-not-found" class="collapse">
-                  <div class="alert alert-danger">
-                    <strong>Oops!</strong> Seems that this user has not created any gist.<br>
-                  </div>
-                </div>
-                <div class="collapse" id="user-gists-container">
-                  <h4>Available gists:</h4> 
-                  <div class="list-group" id="user-gists">
-                  </div>
-                </div>
               </div>
             </div>
           </div><!-- row -->
