@@ -1,6 +1,6 @@
 ### Hypnotic: Let JavaScript Sleep!
 
-Hypnotic is a library/mechanism that implements synchronized _sleep()_ in JavaScript.
+**Hypnotic** is a library/mechanism that implements synchronized _sleep()_ in JavaScript.
 
 
 Don't miss the [fun demo](http://coolwanglu.github.io/hypnotic/web/demo.html)!
