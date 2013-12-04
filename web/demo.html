@@ -1,4 +1,5 @@
 <!doctype html>
+<!--  vim: set sw=2 ts=2 et tw=78 : --> 
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
@@ -6,6 +7,7 @@
     <title>Hypnotic: Let JavaScript Sleep!</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="demo.css">
     <script src="../deps/streamlinejs/lib/callbacks/require-stub.js"></script>
     <script src="../deps/narcissus/lib/jsdefs.js"></script>
     <script src="../deps/narcissus/lib/jslex.js"></script>
@@ -19,28 +21,36 @@
     <script src="../deps/streamlinejs/lib/callbacks/runtime.js"></script>
     <script src="../deps/streamlinejs/lib/callbacks/builtins.js"></script>
     <script src="../lib/hypnotic.min.js"></script>
+    <script src="sleep.js"></script>
     <script src="demo.js"></script>
     <style>
     </style>
   </head>
   <body>
+    <a href="https://github.com/coolwanglu/hypnotic"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
     <div class="container">
       <div class="jumbotron">
-        <h1>Hypnotic: <small>Let JavaScript Sleep!</small></h1>
+        <h1>Hypnotic <small>Let JavaScript Sleep!</small></h1>
         <h3>by <a target="_blank" href="http://coolwanglu.github.io/">Lu Wang</a></h3>
         <br/>
-        <p>We all know that <a target="_blank" href="https://www.google.com.hk/search?q=why+is+there+no+sleep+function+in+javascript" >there is no <em>sleep()</em> in JavaScript</a>.</p>
+        <p>We all knew that <a target="_blank" href="https://www.google.com.hk/search?q=why+is+there+no+sleep+function+in+javascript" >there is no <em>sleep()</em> in JavaScript</a>.</p>
         <p>But those days are finally over! Try <strong>Hypnotic</strong> below and enjoy!</p>
       </div>
+      <ul class="nav nav-tabs nav-justified">
+        <li><a href="#">Background</a></li>
+        <li class="active"><a href="#">Play!</a></li>
+        <li><a href="#">How did it work?</a></li>
+      </ul>
+      <br>
       <div class="row">
         <div class="col-md-6">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">Play around with the source code and hit <strong>Execute</strong></h3>
+              <h3 class="panel-title">Play around with the source code and hit <strong>Execute!</strong>  <span class="glyphicon glyphicon-arrow-right"></span></h3>
             </div>
             <div class="panel-body">
               <div class="alert alert-warning">
-                <strong>Warning:</strong> Only Firefox is supported right now.
+                Only Firefox is supported right now.
               </div>
               <textarea id="source" class="form-control" autocomplete="off" rows="30">
         // Collect mouse events
@@ -54,10 +64,12 @@
             events.length = 0;
             var threshold = Date.now() + timeout;
             while(events.length == 0) {
-                if((timeout > 0) && (Date.now() >= threshold))
+                if((timeout > 0) 
+                   && (Date.now() >= threshold))
                     return false;
     
                 sleep(10); // does it work?
+                           // at least busy-wait doesn't
             }
             return true;
         }
@@ -80,29 +92,32 @@
     
     
     
+
+
+
         /*
          * Does sleep() work in JavaScript?
          * Yes with Hypnotic!
          */
         (function(){
-            print('How fast can you react?');
-            sleep(1500);
+            print('How fast can you react?'); sleep(1500);
     
-            print('Let\'s see...');
-            sleep(1500);
+            print('Let\'s see...'); sleep(1500);
+
+        /* so what? isn't that just busy-wait? let's see... */
     
             print('Hold your mouse...');
             var timeout = 1000 + 2000 * Math.random(); 
             if(wait_for_mousemove(timeout)) {
-                print('Too soon!');
-                return;
+                print('Too soon!'); return;
             }
     
+        /* wait_for_mousemove() essentially calls sleep(), see above */
+
             print('Wait for it...');
             var timeout = 2000 + 1000 * Math.random(); 
             if(wait_for_mousemove(timeout)) {
-                print('Too soon!');
-                return;
+                print('Too soon!'); return;
             }
     
             print('Move it now!');
@@ -116,9 +131,33 @@
         </div>
         <div class="col-md-6">
           <button class="btn btn-primary btn-lg" type="button" id="execute">Execute!</button>
-          <div class="well"><h3 id="output"></h3></div>
+          <br>
+          <br>
+          <div class="well well-lg"><h2 id="output">&nbsp;</h2></div>
         </div>
+      </div><!-- row -->
+      <div class="footer">
+        <p>© Lu Wang 2013</p>
       </div>
-    </div>
+      <br>
+      <br>
+      <br>
+      <!-- disqus -->
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+          var disqus_shortname = 'hypnotic'; // required: replace example with your forum shortname
+
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div><!-- container -->
   </body>
 </html>
