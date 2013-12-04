@@ -40,7 +40,7 @@
         <h1><strong>Hypnotic</strong> <small>Let JavaScript <em>Sleep()</em>!</small></h1>
         <h3>by <a target="_blank" href="http://coolwanglu.github.io/">Lu Wang</a></h3>
         <br/>
-        <p>We all knew that <a target="_blank" href="https://www.google.com.hk/search?q=why+is+there+no+sleep+function+in+javascript">
+        <p>We all knew that <a target="_blank" href="//www.google.com/search?q=why+is+there+no+sleep+function+in+javascript">
           there is no <em>sleep()</em> in JavaScript</a>.&nbsp;&nbsp;
           <button type="button" class="btn btn-default btn-xs" data-toggle="collapse" data-target="#did-you-mean">
             <span class="glyphicon glyphicon-arrow-left"></span> Wait, that's not true!
@@ -54,6 +54,8 @@
                 <ul class="nav nav-pills nav-stacked small narrow" role="navigation">
                   <li class="active"><a href="#busy-wait" data-toggle="tab">while(Date.now() < stop){}</a></li>
                   <li><a href="#settimeout" data-toggle="tab">setTimeout(callback, delay);</a></li>
+                  <li><a href="#promise" data-toggle="tab">Promises</a></li>
+                  <li><a href="#transformation" data-toggle="tab">Transformation</a></li>
                   <li><a href="#plugin" data-toggle="tab">Browser Plugins</a></li>
                   <li><a href="#others" data-toggle="tab">Others</a></li>
                 </ul>
@@ -62,7 +64,7 @@
                 <div class="well well-lg tab-content"> 
                   <div id="busy-wait" class="tab-pane fade in active">
                     <p>Although you can waste some time with a loop, the
-                    JavaScript interpreter is actually freezed such that you
+                    JavaScript interpreter is actually frozen such that you
                     cannot receive any events, and that's why this is called 
                     <a href="http://en.wikipedia.org/wiki/Busy_waiting">busy-waiting</a>.
                     The following reaction game won't work with a busy-waiting
@@ -84,6 +86,30 @@
                     <strong>Hypnotic</strong>, life becomes much easier now!
                     </p>
                   </div>
+                  <div id="promise" class="tab-pane fade">
+                    <p><a href="//www.google.com/search?q=promise+pattern">Promise pattern</a> saves us from nested brackets,
+                    it lets us write asynchronous code in an intuitive way. But still you need to define lots of callback functions,
+                    with extra efforts to maintain states. How about writing a loop with the promise pattern? Sounds easy?
+                    </p>
+                    <p>
+                    On the other hand, <strong>Hypnotic</strong> brings the missing <em>sleep()</em> for you! You want delays in loops, branches and even with exception handling? Piece of cake!
+                    </p>
+                  </div>
+                  <div id="transformation" class="tab-pane fade">
+                    <p>You've been playing around with <a href="https://github.com/Sage/streamlinejs">streamline.js</a>,
+                    <a href="https://github.com/BYVoid/continuation">continuation.js</a> or
+                    <a href="https://github.com/JeffreyZhao/wind">Wind.js</a>, haven't you?
+                    These semi-auto <a href="http://en.wikipedia.org/wiki/Continuation-passing_style">CPS</a> transformers give
+                    us brand new experience writing asynchronous functions in a synchronous fashion. They are almost the ultimate
+                    solution except for that we have to mark all the asynchronous functions in some way &mdash; 
+                    this cannot be done by the transformers,
+                    you won't know if a function is synchronous or not until 
+                    it is actually resolved in the runtime.
+                    </p>
+                    <p>
+                      Try to rename or override <em>sleep()</em> in the below and see if <strong>Hypnotic</strong> still works!
+                    </p>
+                  </div>
                   <div id="plugin" class="tab-pane fade">
                     <p>I wouldn't believe that you'd thought about this. It might
                     be indeed possible to extend JavaScript via browser
@@ -92,8 +118,8 @@
                     </p>
                     <p>
                     On the other hand, <strong>Hypnotic</strong> is written in
-                    pure JavaScript. <small>Although there are works left in order to
-                    support more browsers.</small>
+                    pure JavaScript. <small>Although there are still works left in order to
+                      support more browsers.</small> Did you know that you can run <code>print(sleep.toSource());</code>?
                     </p>
                   </div>
                   <div id="others" class="tab-pane fade">
@@ -225,11 +251,13 @@
                 <h4><span class="glyphicon glyphicon-arrow-left"></span> Try your own code with <em>sleep()</em>.</h4>
                   <div class="jumbotron" id="what-is-it-good-for">
                     <h3>What is it good for?</h3>
-                    <ul>
-                      <li>Write synchronous codes in JavaScript.</li>
-                      <li>Of course asynchronous code still works.</li>
-                      <li><strong>Hypnotic</strong> can be easily extended.<ul><li>How about <a id="load-semaphore-demo" href="#">semaphores?</a></li></ul></li>
-                    </ul>
+                    <small>
+                      <ul>
+                        <li>Write synchronous code in JavaScript.</li>
+                        <li>Of course asynchronous code still works.</li>
+                        <li><strong>Hypnotic</strong> can be easily extended.<ul><li>How about <a id="load-semaphore-demo" href="#">semaphores?</a></li></ul></li>
+                      </ul>
+                    </small>
                   </div>
               </div>
             </div>
