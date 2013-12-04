@@ -5,7 +5,7 @@ Hypnotic is a library/mechanism that implements synchronized _sleep()_ in JavaSc
 
 Don't miss the [fun demo](http://coolwanglu.github.io/hypnotic/web/demo.html)!
 
-For technical deatais, please go to [wiki](https://github.com/coolwanglu/hypnotic/wiki)
+For technical details, please go to [wiki](https://github.com/coolwanglu/hypnotic/wiki)
 
 
 ### AUTHOR
