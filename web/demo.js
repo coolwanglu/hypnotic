@@ -32,12 +32,14 @@ $(function() {
         src.scrollTop = src.scrollHeight;
     });
 
-    document.getElementById('load-semaphore-demo').addEventListener('click', function() {
+    document.getElementById('load-semaphore-demo').addEventListener('click', function(e) {
+        e.preventDefault();
         load_github_user_gist_raw_file('7786903', 'Semaphore');
         $('#output').html('Here\'s the demo!');
     });
 
-    document.getElementById('link-try-your-own').addEventListener('click', function() {
+    document.getElementById('link-try-your-own').addEventListener('click', function(e) {
+        e.preventDefault();
         $('#try-your-own').collapse('show');
     });
 
