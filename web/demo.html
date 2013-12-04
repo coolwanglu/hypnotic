@@ -22,8 +22,9 @@
     <script src="../deps/streamlinejs/lib/util/future.js"></script>
     <script src="../deps/streamlinejs/lib/callbacks/runtime.js"></script>
     <script src="../deps/streamlinejs/lib/callbacks/builtins.js"></script>
-    <script src="../lib/hypnotic.min.js"></script>
+    <script src="../lib/hypnotic.js"></script>
     <script src="sleep.js"></script>
+    <script src="semaphoreone.js"></script>
     <script src="demo.js"></script>
     <style>
     </style>
@@ -51,11 +52,11 @@
             <div class="row">
               <div class="col-md-4">
                 <h4>Let me guess... Did you mean:</h4>
-                <ul class="nav nav-pills nav-stacked small narrow">
+                <ul class="nav nav-pills nav-stacked small narrow" role="navigation">
                   <li class="active"><a href="#busy-wait" data-toggle="tab">while(Date.now() < stop){}</a></li>
                   <li><a href="#settimeout" data-toggle="tab">setTimeout(callback, delay);</a></li>
                   <li><a href="#plugin" data-toggle="tab">Browser Plugins</a></li>
-                  <li><a href="#others" data-toggle="tab">others</a></li>
+                  <li><a href="#others" data-toggle="tab">Others</a></li>
                 </ul>
               </div>
               <div class="col-md-8">
@@ -106,17 +107,26 @@
             </div> <!-- row -->
           </div>
         </div> <!-- panel -->
-        <p>But those days are finally over! Try <strong>Hypnotic</strong> below and enjoy!</p>
+        <p>But those days are finally over!</p>
+        <p><strong>Hypnotic</strong> lets you write <em>synchronous sleep()</em> without freezing your browser.</p>
+        <p>Try it below and enjoy! :)<p>
       </div>
-      <ul class="nav nav-tabs nav-justified">
+      <ul class="nav nav-tabs nav-justified" role="navigation">
         <li><a href="#background" data-toggle="tab">Background</a></li>
-        <li class="active"><a href="#play" data-toggle="tab">Play!</a></li>
+        <li class="active"><a href="#play" data-toggle="tab" id="link-play">Play!</a></li>
         <li><a href="#how-did-it-work" data-toggle="tab">How did it work?</a></li>
       </ul>
       <br>
       <div class="tab-content">
-        <div class="tab-pane fade" id="background">
-          <p>Background</p>
+        <div class="tab-pane fade jumbotron" id="background">
+          <p>JavaScript is a single-threaded event-driven language. It is a kind of feature with which we rarely
+          need to worry about locking, re-entrancy, atomic operations or other thread safety issues.</p>
+          <p>But an immediate side effect is that in JavaScript there is no <em>sleep()</em>, which exists in most
+          other languages. In JavaScript we can never suspend the current thread as there is no extra thread to wake us up!</p>
+          <p> Although busy-waiting and <em>setTimeout()</em> might help in some situations, 
+          it may be very annoying writing in the asynchronous fashion, especially when writing timing logics.  </p>
+          <p>Finally those days are over! <small><small class="text-muted">Kind of.</small></small></p>
+          <p>Play the reaction game and see how <strong>Hypnotic</strong> could make your life easier!</p>
         </div>
         <div class="tab-pane fade in active" id="play">
           <div class="row">
@@ -210,6 +220,36 @@
               <br>
               <br>
               <div class="well well-lg"><h2 id="output">&nbsp;</h2></div>
+              <a class="pull-right" id="link-try-your-own">Try your own code</a>
+              <div id="try-your-own" class="collapse">
+                <h3><span class="glyphicon glyphicon-arrow-left"></span> Looks interesting?</h3>
+                <h4>Try your own code with <em>sleep()</em>.</h4>
+                <br>
+                <br>
+                <h4><span class="glyphicon glyphicon-arrow-down"></span> You can also load github gists and share it with others!</h4>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="github-username" placeholder="Github Username">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" id="btn-list-github-user-gist">Load</button>
+                  </span>
+                </div>
+                <div id="alert-not-opt-in" class="collapse">
+                  <div class="alert alert-danger">
+                    <strong>Oops!</strong> Seems that this user has not opted in.<br>
+                    If you would like to opt-in, <a href="https://github.com/coolwanglu/hypnotic" class="alert-link">star the project at Github</a>.
+                  </div>
+                </div>
+                <div id="alert-gist-not-found" class="collapse">
+                  <div class="alert alert-danger">
+                    <strong>Oops!</strong> Seems that this user has not created any gist.<br>
+                  </div>
+                </div>
+                <div class="collapse" id="user-gists-container">
+                  <h4>Available gists:</h4> 
+                  <div class="list-group" id="user-gists">
+                  </div>
+                </div>
+              </div>
             </div>
           </div><!-- row -->
         </div> <!-- .tab-pane#play -->
