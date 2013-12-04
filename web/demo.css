@@ -1,3 +1,6 @@
 .jumbotron {
   background-color: transparent;
 }
+ul.narrow > li > a {
+    padding:1px 15px;
+}
