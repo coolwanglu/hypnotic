@@ -1,4 +1,4 @@
-### Hypnotic: Let JavaScript Sleep!
+### **Hypnotic**: Let JavaScript _Sleep()_!
 
 **Hypnotic** is a library/mechanism that implements synchronized _sleep()_ in JavaScript.
 
