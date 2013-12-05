@@ -56,7 +56,7 @@
                   <li><a href="#settimeout" data-toggle="tab">setTimeout(callback, delay);</a></li>
                   <li><a href="#promise" data-toggle="tab">Promises</a></li>
                   <li><a href="#transformation" data-toggle="tab">Transformation</a></li>
-                  <li><a href="#plugin" data-toggle="tab">Browser Plugins</a></li>
+                  <li><a href="#extensions" data-toggle="tab">Extensions of Interpreters</a></li>
                   <li><a href="#others" data-toggle="tab">Others</a></li>
                 </ul>
               </div>
@@ -110,16 +110,15 @@
                       Try to rename or override <em>sleep()</em> in the below and see if <strong>Hypnotic</strong> still works!
                     </p>
                   </div>
-                  <div id="plugin" class="tab-pane fade">
-                    <p>I wouldn't believe that you'd thought about this. It might
-                    be indeed possible to extend JavaScript via browser
-                    plugins, but who would like to use that in the era of
-                    HTML5?
+                  <div id="extensions" class="tab-pane fade">
+                    <p>Yes, we do have native <em>sleep()</em> with <a href="https://github.com/laverdet/node-fibers">fibers</a>,
+                    <a href="https://developer.mozilla.org/en/docs/Rhino/Shell">Rhino</a>, 
+                    or even <a href="http://sejq.blogspot.hk/2008/12/two-javascript-synchronous-sleep.html">XPCOM</a>, 
+                    but they rely on special extensions for interpreters, which are not a general solutions.
                     </p>
                     <p>
                     On the other hand, <strong>Hypnotic</strong> is written in
-                    pure JavaScript. <small>Although there are still works left in order to
-                      support more browsers.</small> Did you know that you can run <code>print(sleep.toSource());</code>?
+                    pure JavaScript. Did you know that you can run <code>print(sleep.toSource());</code>?
                     </p>
                   </div>
                   <div id="others" class="tab-pane fade">
@@ -140,6 +139,7 @@
         <li><a href="#background" data-toggle="tab">Background</a></li>
         <li class="active"><a href="#play" data-toggle="tab" id="link-play">Play!</a></li>
         <li><a href="#how-did-it-work" data-toggle="tab">How did it work?</a></li>
+        <li><a href="#motivation" data-toggle="tab">Should I use <strong>Hypnotic</strong>?&nbsp;&nbsp;<span class="label label-warning">new!</span></a></li>
       </ul>
       <br>
       <div class="tab-content">
@@ -162,7 +162,10 @@
                 </div>
                 <div class="panel-body">
                   <div class="alert alert-warning">
-                    Only Firefox is supported right now.
+                    Only Firefox is supported right now. <a href="#why-firefox-only" data-toggle="collapse"><small class="text-muted">why?</small></a>
+                    <div class="collapse" id="why-firefox-only">
+                      <strong>Hypnotic</strong> uses some features in the future versions of JavaScript, which are only supported by Firefox currently.
+                    </div>
                   </div>
                   <textarea id="source" class="form-control" autocomplete="off" rows="30">
             // Collect mouse events
@@ -302,6 +305,18 @@
           </div>
           <br>
           <br>
+        </div>
+        <div class="tab-pane fade jumbotron" id="motivation">
+          <p>Thank you so much for all your comments! It appears that previously I did not emphasize the purpose of this project,
+          and sorry if you were confused. Allow me to explain:
+          </p>
+          <blockquote>
+            <p><strong>Hypnotic</strong> introduces <em>sleep()</em> in JavaScript for those who really need it, 
+              but it does not encourage any unnecessary usage of it &mdash; that is why it is called <strong>Hypnotic</strong>!
+            </p>
+          </blockquote>
+          <p>And there is also a <a href="https://github.com/coolwanglu/hypnotic/wiki#is-it-worth-to-introduce-so-much-overhead-only-for-sleep-">longer
+            version</a>.</p>
         </div>
       </div> <!-- tabs -->
       <div class="footer">
