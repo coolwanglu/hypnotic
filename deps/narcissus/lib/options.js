@@ -1,7 +1,11 @@
-/* -*- Mode: JS; tab-width: 4; indent-tabs-mode: nil; -*-
- * vim: set sw=4 ts=8 et tw=78:
+/* vim: set sw=4 ts=4 et tw=78: */
+/*
+ * Copyright (c) 2013 Lu Wang <coolwanglu@gmail.com>
+ * Bundled for Hypnotic
+ */
+
+
 /* ***** BEGIN LICENSE BLOCK *****
- *
  * Version: MPL 1.1/GPL 2.0/LGPL 2.1
  *
  * The contents of this file are subject to the Mozilla Public License Version
@@ -22,6 +26,12 @@
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
+ *   Tom Austin <taustin@ucsc.edu>
+ *   Brendan Eich <brendan@mozilla.org>
+ *   Shu-Yu Guo <shu@rfrn.org>
+ *   Dave Herman <dherman@mozilla.com>
+ *   Dimitris Vardoulakis <dimvar@ccs.neu.edu>
+ *   Patrick Walton <pcwalton@mozilla.com>
  *
  * Alternatively, the contents of this file may be used under the terms of
  * either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -37,29 +47,21 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-/*
- * Narcissus - JS implemented in JS.
- *
- * Browser-specific tweaks needed for Narcissus to execute properly
- */
+(function() {
+    var Narcissus = window.Narcissus = window.Narcissus || {};
+    if(Narcissus.options) return;
+    var exports = Narcissus.options= {};
 
-// Prevent setTimeout from breaking out to SpiderMonkey
-Narcissus.interpreter.globalBase.setTimeout = function(code, delay) {
-    var timeoutCode = (typeof code === "string") ?
-            function() { Narcissus.interpreter.evaluate(code); } :
-            code;
-    return setTimeout(timeoutCode, delay);
-};
+// Global variables to hide from the interpreter
+exports.hiddenHostGlobals = { Narcissus: true };
 
-// Prevent setInterval from breaking out to SpiderMonkey
-Narcissus.interpreter.globalBase.setInterval = function(code, delay) {
-    var timeoutCode = (typeof code === "string") ?
-            function() { Narcissus.interpreter.evaluate(code); } :
-            code;
-    return setInterval(timeoutCode, delay);
-};
+// Allow HTML comments?
+exports.allowHTMLComments = false;
 
-// Hack to avoid problems with the Image constructor in Narcissus.
-Narcissus.interpreter.globalBase.Image = function() {};
+// Allow non-standard Mozilla extensions?
+exports.mozillaMode = true;
 
+// Allow experimental paren-free mode?
+exports.parenFreeMode = false;
 
+})();

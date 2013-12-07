@@ -47,7 +47,7 @@ $(function() {
     btn_execute.addEventListener('click', function() {
         btn_execute.disabled = true;
         btn_execute.innerHTML = 'Running...';
-        Hypnotic.execute(src.value, function(){
+        Hypnotic.evaluate(src.value, '', 0, function(){
             btn_execute.disabled = false;
             btn_execute.innerHTML = 'Execute!';
 

@@ -5,7 +5,6 @@
 (function(exports) {
 	var __g = require("streamline/lib/globals");
 	__g.runtime = 'callbacks';
-	var __fut = require("streamline/lib/util/future");
 	__g.context = __g.context || {};
 	__g.depth = __g.depth || 0;
 
@@ -32,7 +31,7 @@
 		function __func(_, __this, __arguments, fn, index, frame, body) {
 			if (typeof _ !== 'function') {
 				if (_ !== false && !__g.oldStyleFutures) throw new Error("invalid argument #" + index + ": you must pass _ or !_ (https://github.com/Sage/streamlinejs/issues/164)");
-				return __fut.future.call(__this, fn, __arguments, index);
+				return;
 			}
 			frame.file = filename;
 			frame.prev = __g.frame;
@@ -57,7 +56,6 @@
 			__g: __g,
 			__func: __func,
 			__cb: __cb,
-			__future: __fut.future,
 			__propagate: __propagate,
 			__trap: __trap,
 			__tryCatch: __tryCatch,
@@ -66,7 +64,6 @@
 			__apply: __apply,
 			__construct: __construct,
 			__setEF: __setEF,
-			streamlinify: __fut.streamlinify,
 		};
 	};
 
@@ -167,7 +164,7 @@
 	}
 
 	function __apply(cb, fn, thisObj, args, index) {
-		if (cb == null) return __fut.future(__apply, arguments, 0);
+		if (cb == null) return;
 		args = Array.prototype.slice.call(args, 0);
 		args[index != null ? index : args.length] = cb;
 		return fn.apply(thisObj, args);
